@@ -40,6 +40,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Moan: # Amour
+      collection: MoanMale
+    Howl: # Amour
+      collection: AwoMale
 
 - type: emoteSounds
   id: FemaleHuman
@@ -82,6 +86,10 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Moan: # Amour
+      collection: MoanFemale
+    Howl: # Amour
+      collection: Awo
 
 - type: emoteSounds
   id: MaleReptilian
@@ -106,6 +114,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    Moan: # Amour
+      path: /Audio/Voice/Reptilian/reptilian_scream.ogg
 
 - type: emoteSounds
   id: FemaleReptilian
@@ -130,6 +140,8 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Moan: # Amour
+      path: /Audio/Voice/Reptilian/reptilian_scream.ogg
 
 - type: emoteSounds
   id: MaleSlime
@@ -172,6 +184,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Moan: # Amour
+      collection: MoanMale
   params:
     variation: 0.125
 
@@ -216,6 +230,8 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Moan: # Amour
+      collection: MoanFemale
   params:
     variation: 0.125
 
@@ -273,6 +289,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    Moan: # Amour
+      path: /Audio/Voice/Arachnid/arachnid_scream.ogg
 
 - type: emoteSounds
   id: UnisexDwarf
@@ -313,6 +331,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Moan: # Amour
+      collection: MoanMale
   params:
     variation: 0.125
     pitch: 0.75
@@ -356,6 +376,8 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Moan: # Amour
+      collection: MoanFemale
   params:
     variation: 0.125
     pitch: 0.75
@@ -383,6 +405,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MothDeathGasp
+    Moan: # Amour
+      path: /Audio/Voice/Moth/moth_scream.ogg
 
 - type: emoteSounds
   id: UnisexSilicon

@@ -33,7 +33,7 @@ public sealed partial class VocalComponent : Component
 
     [DataField("wilhelmProbability")]
     [AutoNetworkedField]
-    public float WilhelmProbability = 0.0002f;
+    public float WilhelmProbability = 0.02f;
 
     [DataField("screamAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     [AutoNetworkedField]

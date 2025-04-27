@@ -50,7 +50,13 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Shared.Humanoid;
+using Robust.Shared.GameObjects.Components.Localization;
+using Content.Server.IdentityManagement;
+using Robust.Shared.Localization;
 using Timer = Robust.Shared.Timing.Timer;
+using Gender = Robust.Shared.Enums.Gender;
+using Content.Server.Hands.Systems;
 
 namespace Content.Server.Administration.Systems;
 
@@ -80,6 +86,9 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly SuperBonkSystem _superBonkSystem = default!;
     [Dependency] private readonly SlipperySystem _slipperySystem = default!;
+    [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoidSystem = default!;
+    [Dependency] private readonly IdentitySystem _identity = default!;
+    [Dependency] private readonly GrammarSystem _grammar = default!;
 
     // All smite verbs have names so invokeverb works.
     private void AddSmiteVerbs(GetVerbsEvent<Verb> args)
@@ -107,7 +116,7 @@ public sealed partial class AdminVerbSystem
                 var coords = _transformSystem.GetMapCoordinates(args.Target);
                 Timer.Spawn(_gameTiming.TickPeriod,
                     () => _explosionSystem.QueueExplosion(coords, ExplosionSystem.DefaultExplosionPrototypeId,
-                        4, 1, 2, args.Target, maxTileBreak: 0), // it gibs, damage doesn't need to be high.
+                        100, 1, 100, args.Target, maxTileBreak: 0), // it gibs, damage doesn't need to be high.
                     CancellationToken.None);
 
                 _bodySystem.GibBody(args.Target);
@@ -518,7 +527,7 @@ public sealed partial class AdminVerbSystem
                 Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/gavel.svg.192dpi.png")),
                 Act = () =>
                 {
-                    _ghostKickManager.DoDisconnect(actorComponent.PlayerSession.Channel, "Smitten.");
+                    _ghostKickManager.DoDisconnect(actorComponent.PlayerSession.Channel, Loc.GetString("admin-smite-ghostkick-reason"));
                 },
                 Impact = LogImpact.Extreme,
                 Message = string.Join(": ", ghostKickName, Loc.GetString("admin-smite-ghostkick-description"))
@@ -546,6 +555,33 @@ public sealed partial class AdminVerbSystem
                 Message = string.Join(": ", nyanifyName, Loc.GetString("admin-smite-nyanify-description"))
             };
             args.Verbs.Add(nyanify);
+
+            var dropName = Loc.GetString("admin-smite-drop-name").ToLowerInvariant();
+            Verb drop = new()
+            {
+                Text = dropName,
+                Category = VerbCategory.Smite,
+                Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/eject.svg.192dpi.png")),
+                Act = () =>
+                {
+                    var uid = args.Target;
+                    if (_inventorySystem.TryGetContainerSlotEnumerator(uid, out var enumerator))
+                    {
+                       while (enumerator.MoveNext(out var slot))
+                       {
+                           _inventorySystem.TryUnequip(uid, slot.ID, true, true);
+                       }
+                    }
+
+                    foreach (var held in _handsSystem.EnumerateHeld(uid))
+                    {
+                        _handsSystem.TryDrop(uid, held);
+                    }
+                },
+                Impact = LogImpact.Extreme,
+                Message = string.Join(": ", dropName, Loc.GetString("admin-smite-drop-description"))
+            };
+            args.Verbs.Add(drop);
 
             var killSignName = Loc.GetString("admin-smite-kill-sign-name").ToLowerInvariant();
             Verb killSign = new()
@@ -632,6 +668,81 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(dust);
 
+        Verb pepel = new()
+        {
+            Text = "admin-smite-pepel-name",
+            Category = VerbCategory.Smite,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/YARtech/pepel.rsi"), "ash"),
+            Act = () =>
+            {
+                var baseXform = Transform(args.Target);
+                EntityManager.QueueDeleteEntity(args.Target);
+                Spawn("Pepel", Transform(args.Target).Coordinates);
+                //_popupSystem.PopupEntity(Loc.GetString("admin-smite-pepel-self"), args.Target, args.Target, PopupType.LargeCaution); pepel is dead.
+                _popupSystem.PopupCoordinates(Loc.GetString("admin-smite-pepel-others", ("name", args.Target)), baseXform.Coordinates,
+                    Filter.PvsExcept(args.Target), true, PopupType.MediumCaution);
+            },
+            Impact = LogImpact.Extreme,
+            Message = Loc.GetString("admin-smite-pepel-description"),
+        };
+        args.Verbs.Add(pepel);
+
+        if (TryComp<HumanoidAppearanceComponent>(args.Target, out var humanoid))
+        {
+            var sexchangeName = Loc.GetString("admin-smite-sexchange-name").ToLowerInvariant();
+            Verb sexchange = new()
+            {
+                Text = sexchangeName,
+                Category = VerbCategory.Smite,
+                Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/Emotes/snap.png")),
+                Act = () =>
+                {
+                    var baseXform = Transform(args.Target);
+                    switch (humanoid.Sex)
+                    {
+                        case Sex.Male:
+                            _humanoidSystem.SetSex(args.Target, Sex.Female);
+                            _popupSystem.PopupEntity(Loc.GetString("admin-smite-sexchange-female", ("name", "вас")),
+                                args.Target, args.Target, PopupType.LargeCaution);
+                            _popupSystem.PopupCoordinates(Loc.GetString("admin-smite-sexchange-female", ("name", args.Target)),
+                                baseXform.Coordinates,Filter.PvsExcept(args.Target), true, PopupType.MediumCaution);
+                            break;
+                        case Sex.Female:
+                            _humanoidSystem.SetSex(args.Target, Sex.Male);
+                            _popupSystem.PopupEntity(Loc.GetString("admin-smite-sexchange-male", ("name", "вас")), args.Target,
+                                args.Target, PopupType.LargeCaution);
+                            _popupSystem.PopupCoordinates(Loc.GetString("admin-smite-sexchange-male", ("name", args.Target)),
+                                baseXform.Coordinates, Filter.PvsExcept(args.Target), true, PopupType.MediumCaution);
+                            break;
+                        default:
+                            _popupSystem.PopupEntity(Loc.GetString("admin-smite-sexchange-unsexed"),
+                                args.Target, args.Target, PopupType.SmallCaution);
+                            break;
+                    }
+
+                    humanoid.Gender = humanoid.Gender switch
+                    {
+                        Gender.Male => Gender.Female,
+                        Gender.Female => Gender.Male,
+                        Gender.Epicene => Gender.Neuter,
+                        Gender.Neuter => Gender.Epicene,
+                        _ => Gender.Neuter
+                    };
+
+                    if (TryComp<GrammarComponent>(args.Target, out var grammar))
+                    {
+                        _grammar.SetGender(new(args.Target, grammar), humanoid.Gender);
+                    }
+
+                    Dirty(args.Target, humanoid);
+                    _identity.QueueIdentityUpdate(args.Target);
+                },
+                Impact = LogImpact.Extreme,
+                Message = string.Join(": ", sexchangeName, Loc.GetString("admin-smite-sexchange-description"))
+            };
+            args.Verbs.Add(sexchange);
+        }
+
         var youtubeVideoSimulationName = Loc.GetString("admin-smite-buffering-name").ToLowerInvariant();
         Verb youtubeVideoSimulation = new()
         {
@@ -694,6 +805,21 @@ public sealed partial class AdminVerbSystem
             Message = string.Join(": ", reptilianName, Loc.GetString("admin-smite-reptilian-species-swap-description"))
         };
         args.Verbs.Add(reptilian);
+
+        var felinidName = Loc.GetString("admin-smite-felinid-name").ToLowerInvariant();
+        Verb felinid = new()
+        {
+            Text = felinidName,
+            Category = VerbCategory.Smite,
+            Icon = new SpriteSpecifier.Texture(new("/Textures/YARtech/felinid.png")),
+            Act = () =>
+            {
+                _polymorphSystem.PolymorphEntity(args.Target, "AdminFelinidSmite");
+            },
+            Impact = LogImpact.Extreme,
+            Message = string.Join(": ", felinidName, Loc.GetString("admin-smite-felinid-description"))
+        };
+        args.Verbs.Add(felinid);
 
         var lockerName = Loc.GetString("admin-smite-locker-stuff-name").ToLowerInvariant();
         Verb locker = new()

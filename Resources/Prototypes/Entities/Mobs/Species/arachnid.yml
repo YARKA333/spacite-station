@@ -81,6 +81,9 @@
       - map: [ "enum.HumanoidVisualLayers.LArm" ]
       - map: [ "enum.HumanoidVisualLayers.RLeg" ]
       - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - map: [ "underwearb" ] #White
+      - map: [ "underweart" ] #White
+      - map: [ "socks" ] #White
       - map: ["jumpsuit"]
       - map: ["enum.HumanoidVisualLayers.LFoot"]
       - map: ["enum.HumanoidVisualLayers.RFoot"]
@@ -113,6 +116,7 @@
         sprite: "Effects/creampie.rsi"
         state: "creampie_arachnid"
         visible: false
+  - type: CustomHeight
   - type: Inventory
     templateId: arachnid
 
@@ -122,6 +126,7 @@
   id: MobArachnidDummy
   categories: [ HideSpawnMenu ]
   components:
+  - type: CustomHeight
   - type: HumanoidAppearance
     species: Arachnid
 

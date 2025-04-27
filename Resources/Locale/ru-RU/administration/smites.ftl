@@ -132,4 +132,8 @@ admin-trick-unpause-map-description = Снимает выбранную карт
 admin-trick-pause-map-description = Ставит выбранную карту на паузу. Обратите внимание, что это не останавливает движение игроков полностью!
 admin-trick-snap-joints-description = Удаляет все физические шарниры из объекта. К сожалению, не отщёлкивает все кости в теле.
 admin-trick-minigun-fire-description = Заставляет целевое оружие стрелять как миниган (очень быстро).
-admin-trick-set-bullet-amount-description = Быстро устанавливает значение количества незаспавненных патронов в оружии.
+admin-trick-set-bullet-amount-description = Быстро устанавливает значение количества незаспавненных патронов в оружии.A
+
+#other
+
+admin-smite-ghostkick-reason = ЕРАТИТ

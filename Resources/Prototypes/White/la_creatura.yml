@@ -1,0 +1,115 @@
+- type: entity
+  name: нечто ужасное
+  parent: [ SimpleMobBase, MobCombat, MobFlammable ]
+  id: MobLaCreatura
+  description: Отвратительный кошмар.
+  suffix: Admeme
+  components:
+  - type: InputMover
+  - type: CombatMode
+  - type: Sprite
+    sprite: White/la_creatura.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+      state: abomination-moving
+  - type: SpriteMovement # It's useless, unless moved by player
+    movementLayers:
+      movement:
+        state: abomination-moving
+    noMovementLayers:
+      movement:
+        state: abomination-moving
+  - type: NpcFactionMember
+    factions:
+      - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.40
+        density: 80
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobState
+  - type: Deathgasp
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: Stamina
+    critThreshold: 100
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 8
+    baseSprintSpeed : 8
+  - type: Tag
+    tags:
+      - DoorBumpOpener
+  - type: Bloodstream
+    bloodMaxVolume: 100
+  - type: NonSpreaderZombie
+  - type: Tool
+    speed: 2
+    qualities:
+         Prying
+  - type: Prying
+    pryPowered: !type:Bool
+        true
+    force: !type:Bool
+      true
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      groups:
+        Brute: 5
+  - type: AmbientSound
+    range: 10
+    volume: 20
+    sound:
+      path: /Audio/White/scary.ogg
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: DeleteOnTrigger
+
+- type: entity
+  id: MobLaCreatura5
+  parent: MobLaCreatura
+  suffix: Admeme 5
+  components:
+  - type: TimedDespawn
+    lifetime: 5
+
+- type: entity
+  id: MobLaCreatura10
+  parent: MobLaCreatura
+  suffix: Admeme 10
+  components:
+  - type: TimedDespawn
+    lifetime: 10
+
+- type: entity
+  id: MobLaCreatura30
+  parent: MobLaCreatura
+  suffix: Admeme 30
+  components:
+  - type: TimedDespawn
+    lifetime: 30

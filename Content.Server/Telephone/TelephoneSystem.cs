@@ -21,6 +21,7 @@ using Robust.Shared.Replays;
 using System.Linq;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.Silicons.Borgs.Components;
+using Robust.Shared.Audio;
 
 namespace Content.Server.Telephone;
 
@@ -43,7 +44,7 @@ public sealed class TelephoneSystem : SharedTelephoneSystem
     public override void Initialize()
     {
         base.Initialize();
-
+        SubscribeLocalEvent<TelephoneComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<TelephoneComponent, ComponentShutdown>(OnComponentShutdown);
         SubscribeLocalEvent<TelephoneComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<TelephoneComponent, ListenAttemptEvent>(OnAttemptListen);
@@ -52,6 +53,13 @@ public sealed class TelephoneSystem : SharedTelephoneSystem
     }
 
     #region: Events
+    private void OnComponentInit(Entity<TelephoneComponent> entity, ref ComponentInit ev)
+    {
+        if (entity.Comp.RingTone is SoundCollectionSpecifier)
+        {
+            entity.Comp.RingTone = new SoundPathSpecifier(_audio.GetSound(entity.Comp.RingTone));
+        }
+    }
 
     private void OnComponentShutdown(Entity<TelephoneComponent> entity, ref ComponentShutdown ev)
     {
@@ -134,19 +142,28 @@ public sealed class TelephoneSystem : SharedTelephoneSystem
                     }
                 }
             }
+            if (telephone.CurrentState != TelephoneState.Ringing)
+            {
+                StopRingrone(entity);
+            }
 
             switch (telephone.CurrentState)
             {
                 // Try to play ring tone if ringing
                 case TelephoneState.Ringing:
                     if (_timing.CurTime > telephone.StateStartTime + TimeSpan.FromSeconds(telephone.RingingTimeout))
+                    {
                         EndTelephoneCalls(entity);
+                    }
 
                     else if (telephone.RingTone != null &&
-                        _timing.CurTime > telephone.NextRingToneTime)
+                        _timing.CurTime >= telephone.NextRingToneTime)
                     {
-                        _audio.PlayPvs(telephone.RingTone, uid);
-                        telephone.NextRingToneTime = _timing.CurTime + TimeSpan.FromSeconds(telephone.RingInterval);
+                        StopRingrone(entity);
+                        var sound = _audio.GetSound(telephone.RingTone);
+                        telephone.Stream = _audio.PlayPvs(sound, uid)?.Entity;
+
+                        telephone.NextRingToneTime = _timing.CurTime + MathHelper.Max(TimeSpan.FromSeconds(telephone.RingInterval), _audio.GetAudioLength(sound));
                     }
 
                     break;
@@ -294,6 +311,7 @@ public sealed class TelephoneSystem : SharedTelephoneSystem
             return;
 
         HandleEndingTelephoneCalls(entity, TelephoneState.Idle);
+        StopRingrone(entity);
     }
 
     private void HandleEndingTelephoneCalls(Entity<TelephoneComponent> entity, TelephoneState newState)
@@ -472,5 +490,14 @@ public sealed class TelephoneSystem : SharedTelephoneSystem
     public bool IsTelephonePowered(Entity<TelephoneComponent> entity)
     {
         return this.IsPowered(entity, EntityManager) || !entity.Comp.RequiresPower;
+    }
+
+    public void StopRingrone(Entity<TelephoneComponent> entity)
+    {
+        if (Exists(entity.Comp.Stream))
+        {
+            _audio.Stop(entity.Comp.Stream);
+        }
+        entity.Comp.NextRingToneTime = _timing.CurTime;
     }
 }

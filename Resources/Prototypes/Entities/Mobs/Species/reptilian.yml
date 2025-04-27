@@ -68,6 +68,7 @@
       295: 0.6
       285: 0.4
   - type: Wagging
+  - type: CustomHeight
   - type: Inventory
     speciesId: reptilian
     femaleDisplacements:
@@ -107,6 +108,7 @@
     - Snout
     - HeadTop
     - HeadSide
+  - type: CustomHeight
   - type: Inventory
     speciesId: reptilian
     femaleDisplacements:

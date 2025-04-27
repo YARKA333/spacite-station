@@ -57,7 +57,7 @@
     targetZoom: "1.125, 1.125"
     maxZoom: "1.125, 1.125"
   - type: Speech
-    allowedEmotes: ['Howl', 'Growl']
+    allowedEmotes: ['Howl', 'Growl','Barking']
   - type: Vocal
     sounds:
       Male: MaleVulpkanin
@@ -81,6 +81,7 @@
     damageRecovery:
       types:
         Asphyxiation: -2.0
+  - type: CustomHeight
   - type: Wagging
 
 - type: entity
@@ -93,6 +94,7 @@
   components:
   - type: HumanoidAppearance
     species: Vulpkanin
+  - type: CustomHeight
   - type: Inventory
     speciesId: reptilian
     femaleDisplacements:

@@ -1364,3 +1364,14 @@
   id: WriteIgnoreStamps
 
 # ALPHABETICAL
+
+# NOT ALPHABETICAL
+- type: Tag
+  id: socks
+
+- type: Tag
+  id: underwearb
+
+- type: Tag
+  id: underweart
+

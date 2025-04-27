@@ -125,7 +125,7 @@ public sealed partial class SpeciesPrototype : IPrototype
     ///     Characters older than this appear old. Characters in between young and old age appear middle aged.
     /// </summary>
     [DataField]
-    public int OldAge = 60;
+    public int OldAge = 50;
 
     /// <summary>
     ///     Characters cannot be older than this. Only used for restrictions...

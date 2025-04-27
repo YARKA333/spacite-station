@@ -11,6 +11,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottomCaptain
+  - CommonUnderwearBraCaptain
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobHeadOfPersonnel
@@ -26,6 +29,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottomHOP
+  - CommonUnderwearBraHOP
+  - CommonUnderwearSocks
 
 # Silicons
 - type: roleLoadout
@@ -49,6 +55,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobBartender
@@ -63,6 +72,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobServiceWorker
@@ -75,6 +87,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobChef
@@ -90,6 +105,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobLibrarian
@@ -102,6 +120,10 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
+
 
 - type: roleLoadout
   id: JobLawyer
@@ -115,6 +137,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobChaplain
@@ -131,6 +156,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobJanitor
@@ -147,6 +175,9 @@
   - Trinkets
   - JanitorPlunger
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobBotanist
@@ -161,6 +192,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobClown
@@ -175,6 +209,9 @@
   - Glasses
   - SurvivalClown
   - Trinkets
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobMime
@@ -190,6 +227,9 @@
   - Glasses
   - SurvivalMime
   - Trinkets
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobMusician
@@ -204,6 +244,9 @@
   - Trinkets
   - Instruments
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 # Cargo
 - type: roleLoadout
@@ -221,6 +264,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottomQM
+  - CommonUnderwearBraQM
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobCargoTechnician
@@ -236,6 +282,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobSalvageSpecialist
@@ -249,6 +298,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 # Engineering
 - type: roleLoadout
@@ -265,6 +317,9 @@
   - SurvivalExtended
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottomCE
+  - CommonUnderwearBraCE
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobTechnicalAssistant
@@ -276,6 +331,9 @@
   - SurvivalExtended
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobStationEngineer
@@ -291,6 +349,9 @@
   - SurvivalExtended
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobAtmosphericTechnician
@@ -304,6 +365,9 @@
   - SurvivalExtended
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 # Science
 - type: roleLoadout
@@ -322,6 +386,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottomRD
+  - CommonUnderwearBraRD
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobScientist
@@ -340,6 +407,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobResearchAssistant
@@ -352,6 +422,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 # Security
 - type: roleLoadout
@@ -369,6 +442,9 @@
   - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
+  - CommonUnderwearBottomHOS
+  - CommonUnderwearBraHOS
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobWarden
@@ -384,6 +460,9 @@
   - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobSecurityOfficer
@@ -400,6 +479,9 @@
   - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobDetective
@@ -415,6 +497,9 @@
   - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobSecurityCadet
@@ -425,6 +510,9 @@
   - SurvivalSecurity
   - Trinkets
   - GroupSpeciesBreathToolSecurity
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 # Medical
 - type: roleLoadout
@@ -444,6 +532,9 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
+  - CommonUnderwearBottomCMO
+  - CommonUnderwearBraCMO
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobMedicalDoctor
@@ -462,6 +553,9 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobMedicalIntern
@@ -474,6 +568,9 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobChemist
@@ -489,6 +586,9 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobParamedic
@@ -506,6 +606,9 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 # Wildcards
 - type: roleLoadout
@@ -518,6 +621,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobReporter
@@ -530,6 +636,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobPsychologist
@@ -542,6 +651,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
 
 - type: roleLoadout
   id: JobBoxer
@@ -555,6 +667,10 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottom
+  - CommonUnderwearBra
+  - CommonUnderwearSocks
+
 
 # These loadouts are used for non-crew spawns, like off-station antags and event mobs
 # They will be used without player configuration, thus they will only ever apply what is forced by MinLimit
@@ -564,6 +680,7 @@
   groups:
   - GroupSpeciesBreathTool
   - GroupTankHarness
+  - CommonUnderwearBottom
 
 - type: roleLoadout
   id: RoleSurvivalStandard
@@ -571,19 +688,21 @@
   - Survival
   - GroupSpeciesBreathTool
   - GroupTankHarness
+  - CommonUnderwearBottom
 
 - type: roleLoadout
   id: RoleSurvivalClown
   groups:
   - SurvivalClown
   - GroupTankHarness
-
+  - CommonUnderwearBottom
 - type: roleLoadout
   id: RoleSurvivalExtended
   groups:
   - SurvivalExtended
   - GroupSpeciesBreathTool
   - GroupTankHarness
+  - CommonUnderwearBottom
 
 - type: roleLoadout
   id: RoleSurvivalMedical
@@ -591,6 +710,7 @@
   - SurvivalMedical
   - GroupSpeciesBreathToolMedical
   - GroupTankHarness
+  - CommonUnderwearBottom
 
 - type: roleLoadout
   id: RoleSurvivalSecurity
@@ -598,6 +718,7 @@
   - SurvivalSecurity
   - GroupSpeciesBreathToolSecurity
   - GroupTankHarness
+  - CommonUnderwearBottom
 
 - type: roleLoadout
   id: RoleSurvivalSyndicate
@@ -605,6 +726,7 @@
   - SurvivalSyndicate
   - GroupSpeciesBreathTool
   - GroupTankHarness
+  - CommonUnderwearBottom
 
 - type: roleLoadout
   id: RoleSurvivalNukie
@@ -612,9 +734,11 @@
   - SurvivalSyndicate
   - GroupSpeciesBreathTool
   - GroupPocketTankDouble
+  - CommonUnderwearBottom
 
 - type: roleLoadout
   id: RoleSurvivalEVA
   groups:
   - GroupEVATank
   - SurvivalExtended
+  - CommonUnderwearBottom

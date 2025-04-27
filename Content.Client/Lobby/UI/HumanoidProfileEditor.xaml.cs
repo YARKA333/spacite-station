@@ -33,6 +33,8 @@ using Robust.Shared.ContentPack;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared.YARtech.CustomHeight;
+using Content.Client.YARtech.CustomHeight;
 using Direction = Robust.Shared.Maths.Direction;
 
 namespace Content.Client.Lobby.UI
@@ -50,6 +52,8 @@ namespace Content.Client.Lobby.UI
         private readonly MarkingManager _markingManager;
         private readonly JobRequirementsManager _requirements;
         private readonly LobbyUIController _controller;
+
+        private CustomHeightSystem _customHeightSystem;
 
         private FlavorText.FlavorText? _flavorText;
         private TextEdit? _flavorTextEdit;
@@ -158,6 +162,10 @@ namespace Content.Client.Lobby.UI
             {
                 Save?.Invoke();
             };
+
+            _customHeightSystem = _entManager.System<CustomHeightSystem>();
+            CHeight.OnValueChanged += HeightValueChanged;
+            ResetHeightButton.OnPressed += ResetHeightButtonOnOnPressed;
 
             #region Left
 
@@ -778,6 +786,7 @@ namespace Content.Client.Lobby.UI
             RefreshTraits();
             RefreshFlavorText();
             ReloadPreview();
+            UpdateHeightControl();
 
             if (Profile != null)
             {
@@ -1223,6 +1232,7 @@ namespace Content.Client.Lobby.UI
             UpdateSexControls(); // update sex for new species
             UpdateSpeciesGuidebookIcon();
             ReloadPreview();
+            UpdateHeightControl(); // kitiks ar smol
         }
 
         private void SetName(string newName)
@@ -1653,6 +1663,64 @@ namespace Content.Client.Lobby.UI
             _exporting = false;
             ImportButton.Disabled = false;
             ExportButton.Disabled = false;
+        }
+
+        private void ResetHeightButtonOnOnPressed(BaseButton.ButtonEventArgs obj)
+        {
+            if (_entManager.TryGetComponent<CustomHeightComponent>(PreviewDummy, out var heightComponent))
+            {
+                SetDummyHeight(_customHeightSystem.GetByteFromHeight(PreviewDummy, heightComponent.Starting));
+            }
+        }
+
+        private void HeightValueChanged(Robust.Client.UserInterface.Controls.Range obj)
+        {
+            SetDummyHeight((byte)CHeight.Value, changeHeightValue: false);
+        }
+
+        public void UpdateHeightControl()
+        {
+            if (Profile == null)
+            {
+                return;
+            }
+            EntityUid? dummy = PreviewDummy;
+            if (dummy.HasValue)
+            {
+                if (!_entManager.TryGetComponent<CustomHeightComponent>(dummy, out var _))
+                {
+                    HeightContainer.Visible = false;
+                    return;
+                }
+                HeightContainer.Visible = true;
+                CHeight.Value = (int)Profile.Appearance.Height;
+                UpdateHeightText();
+                SetDirty();
+            }
+        }
+
+        public void SetDummyHeight(byte height, bool changeHeightValue = true)
+        {
+            EntityUid? dummy = PreviewDummy;
+            if (dummy.HasValue && Profile != null && _entManager.TryGetComponent<CustomHeightComponent>(dummy, out var _))
+            {
+                if (changeHeightValue)
+                {
+                    CHeight.Value = (int)height;
+                }
+                Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithHeight(height));
+                UpdateHeightText();
+                SetDirty();
+            }
+        }
+
+        public void UpdateHeightText()
+        {
+            if (_entManager.TryGetComponent<CustomHeightComponent>(PreviewDummy, out var _))
+            {
+                int height = (int)(_customHeightSystem.GetHeightFromByte(PreviewDummy, (byte)CHeight.Value) * 180f);
+                CHeightInformation.Text = Loc.GetString("humanoid-profile-height-current") + height;
+            }
         }
     }
 }

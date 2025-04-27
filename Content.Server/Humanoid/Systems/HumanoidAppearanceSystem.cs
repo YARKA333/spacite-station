@@ -4,6 +4,7 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Verbs;
 using Robust.Shared.GameObjects.Components.Localization;
+using Content.Shared.YARtech.HumanoidAppearanceExtension;
 
 namespace Content.Server.Humanoid;
 
@@ -51,6 +52,11 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
         {
             grammar.Gender = sourceHumanoid.Gender;
         }
+
+        HumanoidAppearanceClonedEvent ev2 = new HumanoidAppearanceClonedEvent(
+            new Entity<HumanoidAppearanceComponent>(source, sourceHumanoid),
+            new Entity<HumanoidAppearanceComponent>(target, targetHumanoid));
+        RaiseLocalEvent(source, ev2);
 
         Dirty(target, targetHumanoid);
     }

@@ -100,6 +100,19 @@
                                 </BoxContainer>
                                 <!-- Corvax-TTS-End -->
                             </BoxContainer>
+                            <!-- Height -->
+                            <BoxContainer Name="HeightContainer" Margin="10" HorizontalExpand="True" Orientation="Vertical">
+                                <BoxContainer Orientation="Horizontal">
+                                    <Label Text="{Loc 'humanoid-profile-editor-height-short'}" />
+                                    <Label Text="{Loc 'humanoid-profile-editor-height-medium'}" HorizontalExpand="True" Align="Center"/>
+                                    <Label Text="{Loc 'humanoid-profile-editor-height-long'}"/>
+                                </BoxContainer>
+                                <Slider Name="CHeight" HorizontalExpand="True" MinValue="0" MaxValue="255" Value="128" />
+                                <BoxContainer Orientation="Horizontal">
+                                    <Label Name="CHeightInformation" />
+                                    <Button Name="ResetHeightButton" Text="{Loc 'height-reset'}" />
+                                </BoxContainer>
+                            </BoxContainer>
                             <!-- Skin -->
                             <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Vertical">
                                 <Label Text="{Loc 'humanoid-profile-editor-skin-color-label'}" />

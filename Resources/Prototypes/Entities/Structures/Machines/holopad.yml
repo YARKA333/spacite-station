@@ -72,7 +72,8 @@
     speechSounds: Borg
     speechBubbleOffset: 0.45
   - type: Telephone
-    ringTone: /Audio/Machines/double_ring.ogg
+    ringTone:
+        collection: Ringtones
     listeningRange: 2.5
     speakerVolume: Speak
   - type: AccessReader

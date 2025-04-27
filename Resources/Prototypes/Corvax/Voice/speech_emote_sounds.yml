@@ -32,6 +32,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Yapping:
+      collection: Yapping
+    Barking:
+      collection: Barking
 
 - type: emoteSounds
   id: FemaleVulpkanin
@@ -66,3 +70,6 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Barking:
+      collection: Yapping
+

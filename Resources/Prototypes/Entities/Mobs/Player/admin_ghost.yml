@@ -17,6 +17,7 @@
     context: "aghost"
   - type: Ghost
     canInteract: true
+  - type: PepelImmune
   - type: GhostHearing
   - type: Hands
   - type: ComplexInteraction

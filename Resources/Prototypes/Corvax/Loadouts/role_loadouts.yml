@@ -8,6 +8,9 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - CommonUnderwearBottomInspector
+  - CommonUnderwearBraInspector
+
 
 - type: roleLoadout
   id: JobPilot

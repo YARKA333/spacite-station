@@ -1,4 +1,5 @@
 using Content.Server.GameTicking.Prototypes;
+using Content.Shared.YARtech;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using System.Linq;
@@ -11,15 +12,15 @@ public sealed partial class GameTicker
     public string? LobbyBackground { get; private set; }
 
     [ViewVariables]
-    private List<ResPath>? _lobbyBackgrounds;
+    private List<string>? _lobbyBackgrounds;
 
     private static readonly string[] WhitelistedBackgroundExtensions = new string[] {"png", "jpg", "jpeg", "webp"};
 
     private void InitializeLobbyBackground()
     {
-        _lobbyBackgrounds = _prototypeManager.EnumeratePrototypes<LobbyBackgroundPrototype>()
-            .Select(x => x.Background)
-            .Where(x => WhitelistedBackgroundExtensions.Contains(x.Extension))
+        _lobbyBackgrounds = _prototypeManager.EnumeratePrototypes<AnimatedLobbyScreenPrototype>()
+            .Select(x => x.Path)
+            //.Where(x => WhitelistedBackgroundExtensions.Contains(x.Extension))
             .ToList();
 
         RandomizeLobbyBackground();

@@ -1,0 +1,27 @@
+- type: lobbyBackground
+  id: Texu
+  background: /Textures/YARtech/Lobby/Spasite_Station1.webp
+
+- type: animatedLobbyScreen
+  id: SerPower
+  path: /Textures/YARtech/Lobby/ser_power.rsi
+
+- type: animatedLobbyScreen
+  id: Minigame
+  path: /Textures/YARtech/Lobby/minigame.rsi
+
+- type: animatedLobbyScreen
+  id: Hre
+  path: /Textures/YARtech/Lobby/scary_hre.rsi
+
+- type: animatedLobbyScreen
+  id: HandsOff
+  path: /Textures/YARtech/Lobby/hands_off.rsi
+
+- type: animatedLobbyScreen
+  id: SpaciteStation
+  path: /Textures/YARtech/Lobby/spacite_station.rsi
+
+- type: animatedLobbyScreen
+  id: UltraSborka
+  path: /Textures/YARtech/Lobby/ultra_sborka.rsi

@@ -110,6 +110,7 @@
       types:
         Asphyxiation: -1.0
     maxSaturation: 15
+  - type: CustomHeight
   - type: Inventory
     femaleDisplacements:
       jumpsuit:
@@ -125,6 +126,7 @@
   components:
   - type: HumanoidAppearance
     species: SlimePerson
+  - type: CustomHeight
   - type: Inventory
     femaleDisplacements:
       jumpsuit:

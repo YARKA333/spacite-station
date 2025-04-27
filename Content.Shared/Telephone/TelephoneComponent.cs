@@ -34,7 +34,7 @@ public sealed partial class TelephoneComponent : Component
     public SoundSpecifier? RingTone = null;
 
     /// <summary>
-    /// Sets the number of seconds before the next ring tone is played
+    /// Sets the minimum number of seconds before the next ring tone is played
     /// </summary>
     [DataField]
     public float RingInterval = 2f;
@@ -130,6 +130,8 @@ public sealed partial class TelephoneComponent : Component
     /// </summary>
     [ViewVariables, AutoNetworkedField]
     public (string?, string?) LastCallerId;
+
+    public EntityUid? Stream;
 }
 
 #region: Telephone events

@@ -92,7 +92,7 @@ public sealed partial class RequirementsSelector : BoxContainer
         _guides = guides;
 
         TitleLabel.Text = title;
-        TitleLabel.MinSize = new Vector2(titleSize, 0f);
+        TitleLabel.SetWidth = titleSize;
         TitleLabel.ToolTip = description;
 
         if (icon != null)

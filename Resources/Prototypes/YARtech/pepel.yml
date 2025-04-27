@@ -1,0 +1,80 @@
+- type: entity
+  parent: BaseItem
+  id: Pepel
+  name: nuclear ash
+  description: Well...
+  components:
+  - type: Sprite
+    sprite: YARtech/pepel.rsi
+    state: ash
+  - type: Pepel
+  - type: RadiationSource
+  ##- type: Physics
+  ##- type: Transform
+  ##  noRot: true
+  - type: CollisionWake
+    enabled: false
+  - type: Clickable
+  - type: InteractionOutline
+  - type: PointLight
+    enabled: true
+    radius: 2
+    energy: 5
+    color: "#ffe000"
+  - type: SinguloFood
+    energy: 10000
+  - type: PepelImmune
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.01
+        density: 1
+        hard: false
+        layer:
+        - Impassable
+        - Opaque
+
+
+- type: entity
+  name: pepel launcher
+  parent: WeaponLauncherChinaLake
+  id: WeaponLauncherPepel
+  description: Weapon of mass destruction.
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    capacity: 1
+    proto: Pepel
+  - type: Gun
+    soundGunshot:
+      collection: Explosion
+
+- type: entity
+  parent: ProjectileGrenadeBase
+  id: GrenadePepel
+  name: пепельная граната
+  description: Ну ты же адекватный, да ведь?
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Grenades/shrapnelgrenade.rsi
+    layers:
+    - state: icon
+      map: ["enum.TriggerVisualLayers.Base"]
+  - type: ProjectileGrenade
+    fillPrototype: Pepel
+    capacity: 64
+  - type: OnUseTimerTrigger
+    beepSound:
+      path: "/Audio/Effects/beep1.ogg"
+      params:
+        volume: 5
+    initialBeepDelay: 0
+    beepInterval: 2
+    delay: 3.5
+  - type: EmitSoundOnTrigger
+    sound:
+      path: "/Audio/Weapons/Guns/Gunshots/batrifle.ogg"

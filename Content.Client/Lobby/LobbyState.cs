@@ -218,13 +218,19 @@ namespace Content.Client.Lobby
         {
             if (_gameTicker.LobbyBackground != null)
             {
+                Lobby!.Background.SetRSI(_resourceCache.GetResource<RSIResource>(_gameTicker.LobbyBackground).RSI);
+            }
+
+            /*
+            if (_gameTicker.LobbyBackground != null)
+            {
                 Lobby!.Background.Texture = _resourceCache.GetResource<TextureResource>(_gameTicker.LobbyBackground );
             }
             else
             {
                 Lobby!.Background.Texture = null;
             }
-
+            */
         }
 
         private void SetReady(bool newReady)

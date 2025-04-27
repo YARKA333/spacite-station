@@ -990,6 +990,7 @@
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
+  - HeadofSecurityGreatcoat
 
 - type: loadoutGroup
   id: WardenHead

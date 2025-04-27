@@ -32,3 +32,24 @@
       uiWindowPos: 0,1
       strippingWindowPos: 1,1
       displayName: Mask
+
+    - name: underwearb #akhakhakhakha
+      slotTexture: underwearb
+      slotFlags: UNDERWEARB
+      stripTime: 6
+      uiWindowPos: 1,0
+      strippingWindowPos: 3,2
+      displayName: Panties
+      whitelist:
+        tags:
+          - underwearb
+    - name: underweart #khakhakhakhakhah
+      slotTexture: underweart
+      slotFlags: UNDERWEART
+      stripTime: 6
+      uiWindowPos: 1,1
+      strippingWindowPos: 3,1
+      displayName: Bra
+      whitelist:
+        tags:
+          - underweart

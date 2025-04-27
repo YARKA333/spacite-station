@@ -19,6 +19,7 @@ using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Utility;
 using YamlDotNet.RepresentationModel;
+using Content.Shared.YARtech.HumanoidAppearanceExtension;
 
 namespace Content.Shared.Humanoid;
 
@@ -401,7 +402,8 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         }
 
         humanoid.Age = profile.Age;
-
+        HumanoidAppearanceLoadedEvent ev2 = new HumanoidAppearanceLoadedEvent(new Entity<HumanoidAppearanceComponent>(uid, humanoid), profile);
+        RaiseLocalEvent(uid, ev2);
         Dirty(uid, humanoid);
     }
 

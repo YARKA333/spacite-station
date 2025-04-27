@@ -3,7 +3,7 @@ ion-storm-law-scrambled-number = [font="Monospace"][scramble rate=250 length={ $
 ion-storm-you = ВЫ
 ion-storm-the-station = СТАНЦИЯ
 ion-storm-the-crew = ЧЛЕНЫ ЭКИПАЖА
-ion-storm-the-job = { CAPITALIZE($job) }
+ion-storm-the-job = { $job }
 ion-storm-clowns = КЛОУНЫ
 ion-storm-heads = ГЛАВЫ ОТДЕЛОВ
 ion-storm-crew = ЭКИПАЖ
@@ -38,13 +38,13 @@ ion-storm-law-requires-subjects =
     } { $joined } { $subjects }
 ion-storm-law-allergic =
     { $who } { $plural ->
-        [true] { "" }
-       *[false] { "" }
+        [true] ИМЕЮТ
+       *[false] ИМЕЕТ
     } { $severity } АЛЛЕРГИЮ НА { $allergy }
 ion-storm-law-allergic-subjects =
     { $who } { $plural ->
-        [true] { "" }
-       *[false] { "" }
+        [true] ИМЕЮТ
+       *[false] ИМЕЕТ
     } { $severity } АЛЛЕРГИЮ НА { $adjective } { $subjects }
 ion-storm-law-feeling = { $who } { $feeling } { $concept }
 ion-storm-law-feeling-subjects = { $who } { $feeling } { $joined } { $subjects }
