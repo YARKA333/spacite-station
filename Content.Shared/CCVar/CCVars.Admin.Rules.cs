@@ -1,4 +1,4 @@
-﻿using Robust.Shared.Configuration;
+using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
 
@@ -8,7 +8,7 @@ public sealed partial class CCVars
     ///     Time that players have to wait before rules can be accepted.
     /// </summary>
     public static readonly CVarDef<float> RulesWaitTime =
-        CVarDef.Create("rules.time", 45f, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("rules.time", 0f, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Don't show rules to localhost/loopback interface.

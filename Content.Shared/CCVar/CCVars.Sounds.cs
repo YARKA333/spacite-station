@@ -1,11 +1,11 @@
-﻿using Robust.Shared.Configuration;
+using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
 
 public sealed partial class CCVars
 {
     public static readonly CVarDef<bool> LobbyMusicEnabled =
-        CVarDef.Create("ambience.lobby_music_enabled", true, CVar.ARCHIVE | CVar.CLIENTONLY);
+        CVarDef.Create("ambience.lobby_music_enabled", false, CVar.ARCHIVE | CVar.CLIENTONLY);
 
     public static readonly CVarDef<bool> EventMusicEnabled =
         CVarDef.Create("ambience.event_music_enabled", true, CVar.ARCHIVE | CVar.CLIENTONLY);

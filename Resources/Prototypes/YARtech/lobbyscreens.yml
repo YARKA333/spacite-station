@@ -25,3 +25,7 @@
 - type: animatedLobbyScreen
   id: UltraSborka
   path: /Textures/YARtech/Lobby/ultra_sborka.rsi
+
+- type: animatedLobbyScreen
+  id: Nasri
+  path: /Textures/YARtech/Lobby/nasri.rsi

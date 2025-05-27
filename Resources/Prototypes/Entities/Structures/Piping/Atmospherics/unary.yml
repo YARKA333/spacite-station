@@ -394,7 +394,7 @@
   - type: GasCondenser
   - type: AtmosPipeColor
   - type: AtmosDevice
-  - type: PipeRestrictOverlap
+  #- type: PipeRestrictOverlap
   - type: ApcPowerReceiver
     powerLoad: 10000
   - type: Machine

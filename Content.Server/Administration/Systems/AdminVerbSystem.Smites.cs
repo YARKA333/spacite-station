@@ -57,6 +57,9 @@ using Robust.Shared.Localization;
 using Timer = Robust.Shared.Timing.Timer;
 using Gender = Robust.Shared.Enums.Gender;
 using Content.Server.Hands.Systems;
+using Content.Server.Destructible;
+using Content.Shared.YARtech;
+using Content.Server.Xenoarchaeology.XenoArtifacts.Triggers.Components;
 
 namespace Content.Server.Administration.Systems;
 
@@ -89,6 +92,7 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoidSystem = default!;
     [Dependency] private readonly IdentitySystem _identity = default!;
     [Dependency] private readonly GrammarSystem _grammar = default!;
+    [Dependency] private readonly DestructibleSystem _destruct = default!;
 
     // All smite verbs have names so invokeverb works.
     private void AddSmiteVerbs(GetVerbsEvent<Verb> args)
@@ -116,10 +120,18 @@ public sealed partial class AdminVerbSystem
                 var coords = _transformSystem.GetMapCoordinates(args.Target);
                 Timer.Spawn(_gameTiming.TickPeriod,
                     () => _explosionSystem.QueueExplosion(coords, ExplosionSystem.DefaultExplosionPrototypeId,
-                        100, 1, 100, args.Target, maxTileBreak: 0), // it gibs, damage doesn't need to be high.
+                        4, 1, 2, args.Target, maxTileBreak: 0), // it gibs, damage doesn't need to be high.
                     CancellationToken.None);
 
-                _bodySystem.GibBody(args.Target);
+
+                if (HasComp<BodyComponent>(args.Target))
+                {
+                    _bodySystem.GibBody(args.Target);
+                }
+                else
+                {
+                    _destruct.DestroyEntity(args.Target);
+                }
             },
             Impact = LogImpact.Extreme,
             Message = string.Join(": ", explodeName, Loc.GetString("admin-smite-explode-description")) // we do this so the description tells admins the Text to run it via console.
@@ -1018,5 +1030,22 @@ public sealed partial class AdminVerbSystem
             Message = string.Join(": ", superslipName, Loc.GetString("admin-smite-super-slip-description"))
         };
         args.Verbs.Add(superslip);
+
+        var elprimoName = Loc.GetString("admin-smite-elprimo-name").ToLowerInvariant();
+        Verb elprimo = new()
+        {
+            Text = elprimoName,
+            Category = VerbCategory.Smite,
+            Icon = new SpriteSpecifier.Rsi(new("YARtech/elprimo.rsi"), "elprimo"),
+            Act = () =>
+            {
+                var ent = Spawn("Elprimo", Transform(args.Target).Coordinates);
+                EnsureComp<ElprimoComponent>(ent, out var comp);
+                comp.Target = args.Target;
+            },
+            Impact = LogImpact.Extreme,
+            Message = string.Join(": ", elprimoName, Loc.GetString("admin-smite-elprimo-description"))
+        };
+        args.Verbs.Add(elprimo);
     }
 }

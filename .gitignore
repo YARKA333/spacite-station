@@ -313,7 +313,5 @@ Resources/MapImages
 
 # Direnv stuff
 .direnv/
-/Content.Shared/CCVar/CCVars.Chat.cs
-/Content.Shared/CCVar/CCVars.Game.cs
-/Content.Shared/Corvax/CCCVars/CCCVars.cs
-/SpaceStation14.sln
+dis/
+/Resources.zip

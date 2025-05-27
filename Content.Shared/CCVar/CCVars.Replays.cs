@@ -1,4 +1,4 @@
-﻿using Robust.Shared.Configuration;
+using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
 
@@ -15,7 +15,7 @@ public sealed partial class CCVars
     ///     Automatically record full rounds as replays.
     /// </summary>
     public static readonly CVarDef<bool> ReplayAutoRecord =
-        CVarDef.Create("replay.auto_record", false, CVar.SERVERONLY);
+        CVarDef.Create("replay.auto_record", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     The file name to record automatic replays to. The path is relative to <see cref="CVars.ReplayDirectory"/>.
