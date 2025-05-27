@@ -177,6 +177,9 @@ binds:
 - function: Drop
   type: State
   key: Q
+- function: LieDown
+  type: State
+  key: U
 - function: ActivateItemInHand
   type: State
   key: Z
